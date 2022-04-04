@@ -24,3 +24,10 @@ class DeepSpeechService:
         ds = self.load_model()
         output = ds.stt(audio)
         return output
+
+
+def deep_speech_wrapper(file_path: str):
+    dss = DeepSpeechService()
+    buffer = dss.wave_to_brate(file_path)
+    text = dss.inference(buffer)
+    return text
